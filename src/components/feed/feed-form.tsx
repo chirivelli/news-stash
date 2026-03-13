@@ -1,4 +1,4 @@
-import { RiAddLine, RiSparklingLine } from '@remixicon/react'
+import { RiAddLine, RiLoader2Fill } from '@remixicon/react'
 import { useMutation, useQueryClient } from '@tanstack/react-query'
 import { useState } from 'react'
 
@@ -20,6 +20,7 @@ export function FeedForm({
     mutationFn: async (rawUrl: string) => {
       const url = normalizeFeedUrl(rawUrl)
       const feed = await getFeed({ data: { url } })
+      console.log({ url, feed })
       return { url, feed }
     },
     onSuccess: ({ url, feed }) => {
@@ -64,16 +65,27 @@ export function FeedForm({
             className='h-12 w-full rounded-2xl border border-stone-300/80 bg-white/80 px-4 text-sm text-stone-950 transition outline-none focus:border-stone-950'
             placeholder='https://example.com/feed.xml'
             value={draftUrl}
-            onChange={(event) => setDraftUrl(event.target.value)}
+            onChange={(event) => {
+              setDraftUrl(event.target.value)
+              addFeedMutation.reset()
+            }}
           />
         </label>
 
         <Button
+          type='submit'
           className='h-12 rounded-2xl bg-stone-950 text-sm font-semibold tracking-[0.18em] uppercase hover:bg-stone-800'
           disabled={addFeedMutation.isPending || !draftUrl.trim()}
         >
-          <RiAddLine className='size-4' />
-          {addFeedMutation.isPending ? 'Checking feed' : 'Subscribe'}
+          {addFeedMutation.isPending ? (
+            <>
+              <RiLoader2Fill className='size-4 animate-spin' /> {'Checking feed'}
+            </>
+          ) : (
+            <>
+              <RiAddLine className='size-4' /> {'Subscribe'}
+            </>
+          )}
         </Button>
 
         {addFeedMutation.error ? (
