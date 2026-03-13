@@ -66,7 +66,7 @@ export function FeedRail({
         <p className='text-sm text-stone-500'>{subscriptions.length} active</p>
       </div>
 
-      <div className='feed-rail no-scrollbar flex gap-3 overflow-x-auto pb-2'>
+      <div className='flex gap-3 overflow-x-auto pb-2'>
         {feedCards.map((feed) => {
           const isSelected = feed.url === selectedFeedUrl
           const feedTitle = feed.data?.title || getFeedLabel(feed.url)
@@ -74,7 +74,7 @@ export function FeedRail({
           return (
             <article
               key={feed.url}
-              className={`feed-pill min-w-62.5 flex-none rounded-[1.75rem] border p-3 transition ${
+              className={`min-w-62.5 flex-none rounded-[1.75rem] border p-3 backdrop-blur-md transition ${
                 isSelected
                   ? 'border-stone-950 bg-stone-950 text-stone-50'
                   : 'border-stone-200 bg-white/88 text-stone-900'

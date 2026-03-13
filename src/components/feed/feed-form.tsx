@@ -31,12 +31,8 @@ export function FeedForm({
   })
 
   return (
-    <section className='hero-panel grid gap-6 overflow-hidden rounded-[2rem] border border-white/55 px-5 py-6 shadow-[0_30px_120px_rgba(67,44,24,0.12)] sm:px-8 sm:py-8 lg:grid-cols-[1.3fr_0.9fr]'>
+    <section className='grid gap-6 overflow-hidden rounded-[2rem] border border-white/55 px-5 py-6 shadow-[0_30px_120px_rgba(67,44,24,0.12)] sm:px-8 sm:py-8 lg:grid-cols-[1.3fr_0.9fr]'>
       <div className='relative z-10 flex flex-col gap-5'>
-        <div className='eyebrow'>
-          <RiSparklingLine className='size-4' />
-          Your personal current-issue desk
-        </div>
         <div className='max-w-3xl space-y-4'>
           <h1 className='font-display text-4xl leading-none font-semibold text-stone-950 sm:text-5xl lg:text-7xl'>
             News Stash
@@ -49,7 +45,7 @@ export function FeedForm({
       </div>
 
       <form
-        className='glass-card relative z-10 flex flex-col gap-4 rounded-[1.75rem] p-4 sm:p-5'
+        className='relative z-10 flex flex-col gap-4 rounded-[1.75rem] p-4 sm:p-5'
         onSubmit={(event) => {
           event.preventDefault()
           addFeedMutation.mutate(draftUrl)

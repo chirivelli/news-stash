@@ -38,7 +38,7 @@ export function ArticleStack({ feed }: { feed: string }) {
             ))}
           </div>
         ) : selectedFeedQuery.isError ? (
-          <div className='glass-card rounded-[2rem] p-6 text-sm leading-7 text-red-700'>
+          <div className='rounded-[2rem] p-6 text-sm leading-7 text-red-700'>
             {selectedFeedQuery.error.message ?? 'Unable to load this feed right now.'}
           </div>
         ) : selectedFeed?.items.length ? (

@@ -40,7 +40,7 @@ export function Article({ item, index }: { item: FeedItem; index: number }) {
         ) : null}
       </div>
 
-      <div className='article-image relative overflow-hidden rounded-[1.5rem] border border-stone-200/80 bg-[radial-gradient(circle_at_top,rgba(120,86,54,0.2),rgba(255,255,255,0.95)_60%)]'>
+      <div className='relative min-h-52 overflow-hidden rounded-[1.5rem] border border-stone-200/80 bg-[radial-gradient(circle_at_top,rgba(120,86,54,0.2),rgba(255,255,255,0.95)_60%)]'>
         {item.imageUrl ? (
           <img
             alt=''
